@@ -43,9 +43,7 @@ class PlaySoundsViewController: UIViewController {
     }
     
     @IBAction func playBackStop(sender: UIButton) {
-        audioPlayer.stop()
-        audioPlayerEngine.stop()
-        audioPlayerEngine.reset()
+       stopAudioAndEngine()
     }
 
     @IBAction func chipMunkEffect(sender: UIButton) {
@@ -67,17 +65,14 @@ class PlaySoundsViewController: UIViewController {
     
     
     func playAudioRate(rate : Float){
-        audioPlayerEngine.stop()
-        audioPlayerEngine.reset()
+        stopAudioAndEngine()
         audioPlayer.rate = rate
         audioPlayer.play()
     }
     
     func playBackPitchEffectVariable(pitchVariable: Float){
         
-        audioPlayer.stop()
-        audioPlayerEngine.stop()
-        audioPlayerEngine.reset()
+        stopAudioAndEngine()
         
         let audioPitch = AVAudioUnitTimePitch()
         audioPitch.pitch = pitchVariable
@@ -92,16 +87,13 @@ class PlaySoundsViewController: UIViewController {
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
         audioPlayerEngine.prepare()
         try! audioPlayerEngine.start()
-        
         audioPlayerNode.play()
         
     }
     
     func echoAndReverbEffects(type : String){
         
-        audioPlayer.stop()
-        audioPlayerEngine.stop()
-        audioPlayerEngine.reset()
+        stopAudioAndEngine()
         
         let audioPlayerNode = AVAudioPlayerNode()
         audioPlayerEngine.attachNode(audioPlayerNode)
@@ -127,9 +119,14 @@ class PlaySoundsViewController: UIViewController {
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
         audioPlayerEngine.prepare()
         try! audioPlayerEngine.start()
-        
         audioPlayerNode.play()
         
+    }
+    
+    func stopAudioAndEngine(){
+        audioPlayer.stop()
+        audioPlayerEngine.stop()
+        audioPlayerEngine.reset()
     }
     /*
     

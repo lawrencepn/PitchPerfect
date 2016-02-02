@@ -61,7 +61,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "96"
             endingLineNumber = "96"
-            landmarkName = "playBackPitchEffectVariable(_:)"
+            landmarkName = "echoAndReverbEffects(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
